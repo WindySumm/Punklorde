@@ -146,7 +146,7 @@ class _FeatSportCquptRecordViewState extends State<FeatSportCquptRecordView> {
                   // 其他次数
                   _buildStatColumn(
                     context,
-                    mainValue: _statistics.watch(context)?.otherCount ?? 0,
+                    mainValue: _statistics.watch(context)?.otherExamCount ?? 0,
                     mainDeno: _statistics.watch(context)?.targetOtherCount ?? 0,
                     mainLabel: t.submodule.cqupt_sport.other_count,
                     subValue: _statistics.watch(context)?.otherAddCount ?? 0,

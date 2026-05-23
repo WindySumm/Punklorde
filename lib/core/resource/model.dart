@@ -13,6 +13,27 @@ class Source {
   });
 }
 
+/// 缓存文件条目信息
+class CacheEntry {
+  final String key;
+  final String filePath;
+  final int size; // 字节
+  final DateTime lastModified;
+  final DateTime? lastAccessed;
+
+  CacheEntry({
+    required this.key,
+    required this.filePath,
+    required this.size,
+    required this.lastModified,
+    this.lastAccessed,
+  });
+
+  /// 是否在指定时间窗口内过期
+  bool isExpired(Duration expiry) =>
+      DateTime.now().difference(lastModified) >= expiry;
+}
+
 /// 资源状态
 enum ResourceStatus { initial, loading, localLoaded, remoteLoaded, error }
 

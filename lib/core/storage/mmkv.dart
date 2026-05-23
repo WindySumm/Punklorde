@@ -5,6 +5,7 @@ late final MMKV defaultMMKV;
 late final MMKV authMMKV;
 late final MMKV scheduleMMKV;
 late final MMKV cacheMMKV;
+late final MMKV resourceMMKV;
 
 Future<void> initMMKV(String cryptKey) async {
   final storage = StorageService();
@@ -12,4 +13,5 @@ Future<void> initMMKV(String cryptKey) async {
   authMMKV = storage.getMMKV('auth', cryptKey: cryptKey);
   scheduleMMKV = storage.getMMKV('schedule', cryptKey: cryptKey);
   cacheMMKV = storage.getMMKV('cache', cryptKey: cryptKey);
+  resourceMMKV = storage.getMMKV('resource', cryptKey: cryptKey);
 }

@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:forui/forui.dart';
@@ -30,10 +31,15 @@ class _GuestAddPageState extends State<GuestAddPage> {
 
   Future<void> _init() async {
     try {
-      if (widget.data is! DecodedBarcodeBytes) {
+      Uint8List decodedBytes;
+      if (widget.data is DecodedBarcodeBytes) {
+        decodedBytes = (widget.data as DecodedBarcodeBytes).bytes;
+      } else if (widget.data is Uint8List) {
+        decodedBytes = widget.data as Uint8List;
+      } else {
         throw Exception(t.notice.invalid_data);
       }
-      final cred = await AuthCredential.fromSharedData(widget.data.bytes);
+      final cred = await AuthCredential.fromSharedData(decodedBytes);
       if (cred == null) throw Exception(t.notice.invalid_data);
       credential.value = cred.copyWith(guest: true);
       isExist.value = authManager.hasGuest(credential.value!);

@@ -11,7 +11,12 @@ import 'package:punklorde/app/view/page/checkin_user_page.dart';
 import 'package:punklorde/app/view/page/guest.dart';
 import 'package:punklorde/app/view/page/scanner.dart';
 import 'package:punklorde/app/view/page/select_school.dart';
+import 'package:punklorde/app/view/page/sources_list.dart';
+import 'package:punklorde/app/view/page/dl_cache.dart';
 import 'package:punklorde/i18n/strings.g.dart';
+import 'package:punklorde/module/feature/chaoxing/index.dart';
+import 'package:punklorde/module/feature/chaoxing/view/pages/course_active_page.dart';
+import 'package:punklorde/module/feature/chaoxing/view/pages/webview_page.dart';
 import 'package:punklorde/module/feature/cqupt/checkin/index.dart';
 import 'package:punklorde/module/feature/cqupt/sport/index.dart';
 import 'package:punklorde/module/feature/cqupt/sport/view/pages/record.dart';
@@ -23,9 +28,18 @@ import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
 final moduleTitleSignal = signal<String>("");
 final navIndexSignal = signal<int>(0);
+final rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final appRoute = GoRouter(
+  navigatorKey: rootNavigatorKey,
   initialLocation: '/index/launcher',
+  redirect: (context, state) {
+    final scheme = state.uri.scheme;
+    if (scheme == 'content' || scheme == 'file') {
+      return '/index/launcher';
+    }
+    return null;
+  },
   routes: <RouteBase>[
     GoRoute(path: '/', redirect: (context, state) => '/index/launcher'),
     ShellRoute(
@@ -188,6 +202,18 @@ final appRoute = GoRouter(
             return const NoTransitionPage(child: GuestAccountPageView());
           },
         ),
+        GoRoute(
+          path: "/s/sources_list",
+          pageBuilder: (context, state) {
+            return const NoTransitionPage(child: SourcesListPage());
+          },
+        ),
+        GoRoute(
+          path: "/s/dl_cache",
+          pageBuilder: (context, state) {
+            return const NoTransitionPage(child: DlCachePage());
+          },
+        ),
       ],
     ),
     ShellRoute(
@@ -218,6 +244,43 @@ final appRoute = GoRouter(
           pageBuilder: (context, state) {
             return NoTransitionPage(
               child: StudentListPage(id: state.pathParameters['id']),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/feat/chaoxing',
+          pageBuilder: (context, state) {
+            return const NoTransitionPage(child: FeatChaonxingView());
+          },
+        ),
+        GoRoute(
+          path: '/feat/chaoxing/active/:classId/:courseId',
+          pageBuilder: (context, state) {
+            final classId =
+                int.tryParse(state.pathParameters['classId'] ?? '') ?? 0;
+            final courseId =
+                int.tryParse(state.pathParameters['courseId'] ?? '') ?? 0;
+            final className = state.uri.queryParameters['className'] ?? '';
+            final courseName = state.uri.queryParameters['courseName'] ?? '';
+            return NoTransitionPage(
+              child: CourseActivePage(
+                classId: classId,
+                courseId: courseId,
+                className: className,
+                courseName: courseName,
+              ),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/feat/chaoxing/webview',
+          pageBuilder: (context, state) {
+            final extra = state.extra as Map<String, dynamic>?;
+            return NoTransitionPage(
+              child: ChaoxingWebViewPage(
+                url: extra?['url'] as String? ?? '',
+                title: extra?['title'] as String?,
+              ),
             );
           },
         ),

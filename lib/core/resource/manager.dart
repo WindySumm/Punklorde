@@ -102,9 +102,66 @@ class ResourceManager {
     }
   }
 
-  /// 手动检查更新
+  /// 手动检查更新（强制远程拉取，失败则抛异常）
   Future<void> checkForUpdate(String key) async {
     await loadResource(key, forceRemote: true);
+    // 如果 loadResource 返回 null 或降级到了本地缓存，说明远程拉取失败
+    final signal = _resourceSignals[key];
+    if (signal != null &&
+        signal.value.status == ResourceStatus.localLoaded &&
+        signal.value.error != null) {
+      throw Exception(signal.value.error);
+    }
+  }
+
+  /// 列出所有缓存条目
+  Future<List<CacheEntry>> listCacheEntries() async {
+    return _cacheService.listCacheEntries();
+  }
+
+  /// 获取缓存总大小
+  Future<int> getTotalCacheSize() async {
+    return _cacheService.getTotalCacheSize();
+  }
+
+  /// 删除单个缓存
+  Future<bool> deleteCache(String key) async {
+    final result = await _cacheService.deleteCache(key);
+    if (_resourceSignals.containsKey(key)) {
+      _resourceSignals[key]!.value = ResourceState();
+    }
+    return result;
+  }
+
+  /// 清除所有缓存
+  Future<int> clearAllCache() async {
+    final count = await _cacheService.clearAllCache();
+    for (final signal in _resourceSignals.values) {
+      signal.value = ResourceState();
+    }
+    return count;
+  }
+
+  /// 更新源列表
+  void updateSources(List<Source> sources) {
+    sourcesSignal.value = sources;
+  }
+
+  /// 添加源
+  void addSource(Source source) {
+    sourcesSignal.value = [...sourcesSignal.value, source];
+  }
+
+  /// 删除源
+  void removeSource(String id) {
+    sourcesSignal.value = sourcesSignal.value.where((s) => s.id != id).toList();
+  }
+
+  /// 更新单个源
+  void updateSource(String id, Source source) {
+    sourcesSignal.value = sourcesSignal.value.map((s) {
+      return s.id == id ? source : s;
+    }).toList();
   }
 
   /// 清除特定缓存

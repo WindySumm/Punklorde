@@ -8,6 +8,7 @@ late final String deviceOSVersion;
 late final String deviceSdkVersion; // Android独有
 late final String deviceManufacturer;
 late final String deviceBrand;
+late final String deviceBoard; // Android独有
 late final String deviceModel;
 late final String deviceName;
 late final String deviceProduct;
@@ -38,6 +39,7 @@ Future<void> initDeviceStatus() async {
     deviceOSVersion = androidInfo.version.release;
     deviceSdkVersion = androidInfo.version.sdkInt.toString();
     deviceBrand = androidInfo.brand;
+    deviceBoard = androidInfo.board;
     deviceModel = androidInfo.model;
     deviceManufacturer = androidInfo.manufacturer;
     deviceProduct = androidInfo.product;
@@ -46,6 +48,7 @@ Future<void> initDeviceStatus() async {
     final iosInfo = await deviceInfo.iosInfo;
     deviceOSVersion = iosInfo.systemVersion;
     deviceBrand = "iPhone";
+    deviceBoard = "iPhone";
     deviceModel = iosInfo.model;
     deviceManufacturer = "Apple";
     deviceProduct = iosInfo.utsname.machine;

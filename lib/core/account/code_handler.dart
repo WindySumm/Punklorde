@@ -1,5 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:punklorde/app/route/app_route.dart';
 import 'package:punklorde/core/account/view/page/guest_add.dart';
 import 'package:punklorde/module/model/auth.dart';
 import 'package:punklorde/module/model/code_handler.dart';
@@ -20,14 +23,25 @@ class GuestAccountCodeHandler extends CodeHandler {
     if (data is DecodedBarcodeBytes) {
       return startsWith(data.bytes, shareDataMagicNum);
     }
+    if (data is Uint8List) {
+      return startsWith(data, shareDataMagicNum);
+    }
     return false;
   }
 
   @override
-  Future<void> handle(context, data) async {
+  Future<void> handle(BuildContext context, dynamic data) async {
     await Navigator.of(
       context,
     ).push(MaterialPageRoute(builder: (context) => GuestAddPage(data: data)));
+  }
+
+  Future<void> handleFromFile(Uint8List bytes) async {
+    final context = rootNavigatorKey.currentContext;
+    if (context == null) return;
+    await Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (context) => GuestAddPage(data: bytes)));
   }
 }
 

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:punklorde/app/main.dart';
-import 'package:punklorde/core/resource/model.dart';
+import 'package:punklorde/core/account/pkld_file_handler.dart';
 import 'package:punklorde/core/service/widget_service.dart';
 import 'package:punklorde/core/status/app.dart';
 import 'package:punklorde/core/status/auth.dart';
@@ -27,6 +27,8 @@ Future<void> main() async {
 
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  pkldFileHandler.init();
   resetSystemChromeStyle();
 
   // 初始化设备状态
@@ -41,15 +43,10 @@ Future<void> main() async {
   await LocaleSettings.useDeviceLocale();
 
   // 初始化资源管理器
-  await setupResourceManager(
-    dio: Dio(),
-    sources: [
-      Source(
-        id: "default",
-        baseUrl: "https://cdn.jsdelivr.net/gh/zrurf/PunklordeAssets@main/",
-      ),
-    ],
-  );
+  await setupResourceManager(dio: Dio());
+
+  // 加载持久化的源列表（覆盖默认值）
+  await loadResourceStatus();
 
   // 初始化服务
   await initMapService(Env.keyBaiduMapIOS);
@@ -82,6 +79,7 @@ Future<void> initStatus() async {
 
   initAppStatus();
   initAuthStatus();
+  initResourceStatus();
 }
 
 // 加载状态

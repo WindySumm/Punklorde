@@ -6,11 +6,13 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:punklorde/i18n/strings.g.dart';
 import 'package:punklorde/module/platform/chaoxing/chaoxing.dart';
 import 'package:punklorde/module/platform/chaoxing/model.dart';
+import 'package:punklorde/module/platform/chaoxing/view/custom_device_page.dart';
 import 'package:signals/signals_flutter.dart';
 
 /// 学习通登录页 UI
 class ChaoxingLoginPage extends StatefulWidget {
-  final Future<void> Function(String phone, bool isIos) sendVerifyCode;
+  final Future<void> Function(String phone, ChaoxingDeviceConfig? deviceConfig)
+      sendVerifyCode;
   final void Function(ChaoxingLoginConfig) onConfirm;
   const ChaoxingLoginPage({
     super.key,
@@ -24,6 +26,7 @@ class ChaoxingLoginPage extends StatefulWidget {
 
 class _ChaoxingLoginPageState extends State<ChaoxingLoginPage> {
   ChaoxingLoginMethod? _method;
+  ChaoxingDeviceConfig? _deviceConfig;
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +81,52 @@ class _ChaoxingLoginPageState extends State<ChaoxingLoginPage> {
           title: t.action.sms_login,
           onTap: () => _setMethod(.sms),
         ),
+        const SizedBox(height: 24),
+        TextButton.icon(
+          onPressed: () => _openCustomDevicePage(),
+          icon: Icon(
+            LucideIcons.smartphone,
+            size: 18,
+            color: colors.mutedForeground,
+          ),
+          label: Text(
+            t.action.custom_device_info,
+            style: TextStyle(
+              fontSize: 14,
+              color: colors.mutedForeground,
+            ),
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          _deviceConfig?.hasCustomFields == true
+              ? t.title.custom_device_info_hint
+              : t.title.default_device_info_hint,
+          style: TextStyle(
+            fontSize: 12,
+            color: _deviceConfig?.hasCustomFields == true
+                ? colors.primary
+                : colors.mutedForeground,
+          ),
+        ),
       ],
     );
+  }
+
+  Future<void> _openCustomDevicePage() async {
+    final result = await Navigator.of(context).push<ChaoxingDeviceConfig>(
+      MaterialPageRoute(
+        builder: (_) => ChaoxingCustomDevicePage(
+          initialConfig: _deviceConfig,
+        ),
+        fullscreenDialog: true,
+      ),
+    );
+    if (result != null) {
+      setState(() {
+        _deviceConfig = result;
+      });
+    }
   }
 
   /// 根据 _method 跳转到对应页面
@@ -89,15 +136,34 @@ class _ChaoxingLoginPageState extends State<ChaoxingLoginPage> {
         return SingleChildScrollView(
           child: _PasswordForm(
             onBack: _resetMethod,
-            onConfirm: widget.onConfirm,
+            onConfirm: (config) {
+              widget.onConfirm(
+                ChaoxingLoginConfig(
+                  method: config.method,
+                  phone: config.phone,
+                  value: config.value,
+                  deviceConfig: _deviceConfig,
+                ),
+              );
+            },
           ),
         );
       case ChaoxingLoginMethod.sms:
         return SingleChildScrollView(
           child: _SmsCodeForm(
             onBack: _resetMethod,
-            onConfirm: widget.onConfirm,
-            sendVerifyCode: widget.sendVerifyCode,
+            onConfirm: (config) {
+              widget.onConfirm(
+                ChaoxingLoginConfig(
+                  method: config.method,
+                  phone: config.phone,
+                  value: config.value,
+                  deviceConfig: _deviceConfig,
+                ),
+              );
+            },
+            sendVerifyCode: (phone) =>
+                widget.sendVerifyCode(phone, _deviceConfig),
           ),
         );
       default:
@@ -166,7 +232,6 @@ class _PasswordFormState extends State<_PasswordForm> {
   final _formKey = GlobalKey<FormState>();
   final Signal<String> _phoneSignal = signal("");
   final Signal<String> _passwordSignal = signal("");
-  final Signal<bool> _useIosUa = signal(false);
 
   @override
   void dispose() {
@@ -208,12 +273,6 @@ class _PasswordFormState extends State<_PasswordForm> {
                 ? t.notice.pwd_empty_hint
                 : null,
           ),
-          const SizedBox(height: 12),
-          FCheckbox(
-            label: Text(t.title.use_ios_ua),
-            value: _useIosUa.watch(context),
-            onChange: (value) => _useIosUa.value = value,
-          ),
           const FDivider(),
           FButton(
             variant: .primary,
@@ -241,7 +300,6 @@ class _PasswordFormState extends State<_PasswordForm> {
         method: .pwd,
         phone: _phoneSignal.value.trim(),
         value: _passwordSignal.value.trim(),
-        useIosUa: _useIosUa.value,
       ),
     );
     Navigator.of(context).pop();
@@ -252,7 +310,7 @@ class _PasswordFormState extends State<_PasswordForm> {
 class _SmsCodeForm extends StatefulWidget {
   final VoidCallback onBack;
   final void Function(ChaoxingLoginConfig) onConfirm;
-  final Future<void> Function(String phone, bool isIos) sendVerifyCode;
+  final Future<void> Function(String phone) sendVerifyCode;
   const _SmsCodeForm({
     required this.onBack,
     required this.onConfirm,
@@ -267,7 +325,6 @@ class _SmsCodeFormState extends State<_SmsCodeForm> {
   final _formKey = GlobalKey<FormState>();
   final Signal<String> _phoneSignal = signal("");
   final Signal<String> _codeSignal = signal("");
-  final Signal<bool> _useIosUa = signal(false);
   final Signal<int> _verCodeSendCdSignal = signal(0);
 
   Timer? _verCodeSendTimer;
@@ -325,12 +382,6 @@ class _SmsCodeFormState extends State<_SmsCodeForm> {
                 ? Text(t.action.send_sms_code)
                 : Text("${_verCodeSendCdSignal.watch(context).toString()}s"),
           ),
-          const SizedBox(height: 16),
-          FCheckbox(
-            label: Text(t.title.use_ios_ua),
-            value: _useIosUa.watch(context),
-            onChange: (value) => _useIosUa.value = value,
-          ),
           const FDivider(),
           FButton(
             variant: .primary,
@@ -357,7 +408,7 @@ class _SmsCodeFormState extends State<_SmsCodeForm> {
     _sendLock = true;
     _verCodeSendTimer?.cancel();
     final phone = _phoneSignal.value.trim();
-    await widget.sendVerifyCode(phone, _useIosUa.value);
+    await widget.sendVerifyCode(phone);
     _verCodeSendCdSignal.value = 60;
     _verCodeSendTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _verCodeSendCdSignal.value--;
@@ -376,7 +427,6 @@ class _SmsCodeFormState extends State<_SmsCodeForm> {
         method: .sms,
         phone: _phoneSignal.value.trim(),
         value: _codeSignal.value.trim(),
-        useIosUa: _useIosUa.value,
       ),
     );
     Navigator.of(context).pop();

@@ -156,7 +156,7 @@ class _GuestLoginPanelState extends State<GuestLoginPanel> {
                           suffix: Icon(LucideIcons.chevronRight),
                           onPress: () async {
                             try {
-                              final data = pickAndReadFile();
+                              final data = await pickAndReadFile();
                               if (handlerGuestAccount.match(data) &&
                                   context.mounted) {
                                 await handlerGuestAccount.handle(context, data);

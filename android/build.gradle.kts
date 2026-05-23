@@ -11,6 +11,15 @@ allprojects {
         google()
         mavenCentral()
     }
+
+    configurations.all {
+        resolutionStrategy {
+            // home_widget uses glance-appwidget:1.+ which recently resolved
+            // to 1.3.0-alpha01 (requires AGP 9.1+ / compileSdk 37).
+            // Force pin to last stable version compatible with AGP 8.x.
+            force("androidx.glance:glance-appwidget:1.1.1")
+        }
+    }
 }
 
 allprojects {

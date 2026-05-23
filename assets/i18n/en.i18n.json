@@ -61,7 +61,9 @@
     "share_qr_render_error": "QR code generation failed. Please use file sharing instead.",
     "share_failed": "Share failed",
     "failed_open_file": "Failed to open file",
-    "checkin_code_hint": "Please enter the check-in code"
+    "checkin_code_hint": "Please enter the check-in code",
+    "field_required": "This field is required",
+    "invalid_resolution_format": "Invalid resolution format, expected 720*1280"
   },
   "title": {
     "id": "ID",
@@ -92,7 +94,16 @@
     "student_list": "Students List",
     "select_login_method": "Select the login method",
     "use_ios_ua": "Use iOS UA",
-    "checkin_code": "Check-in Code"
+    "checkin_code": "Check-in Code",
+    "custom_device_info": "Custom Device Info",
+    "default_device_info_hint": "Using default device info",
+    "custom_device_info_hint": "Using custom device info",
+    "device_platform": "Device Platform",
+    "device_brand": "Device Brand",
+    "device_board": "Device Board",
+    "device_model": "Device Model",
+    "device_os_ver": "OS Version",
+    "device_resolution": "Resolution"
   },
   "action": {
     "back": "Back",
@@ -108,6 +119,10 @@
     "sms_login": "SMS Login",
     "copy": "Copy",
     "paste": "Paste",
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "add": "Add",
     "open_with": "Open with...",
     "open_with_name": "Open with $name",
     "add_guest": "Add guest account",
@@ -116,7 +131,9 @@
     "guest_add_by_login": "Add by login",
     "guest_add_by_code": "Add from share code",
     "guest_add_by_file": "Add from share file",
-    "manual_select_point": "Manually select check-in point"
+    "manual_select_point": "Manually select check-in point",
+    "custom_device_info": "Custom Device Info",
+    "reset_device_info": "Reset Device Info"
   },
   "label": {
     "primary": "Primary",
@@ -133,6 +150,7 @@
     "exam": "Exam",
     "ongoing": "Ongoing",
     "upcoming": "Upcoming",
+    "ended": "Ended",
     "deadline": "Deadline"
   },
   "feat": {
@@ -149,7 +167,37 @@
     "password_vault": "Password Vault",
     "dl_cache": "Download Cache",
     "sources_list": "Sources List",
-    "github_link": "Github"
+    "github_link": "Github",
+    "source_add": "Add Source",
+    "source_edit": "Edit Source",
+    "source_delete": "Delete Source",
+    "source_delete_confirm": "Are you sure to delete this source?",
+    "source_id": "Source ID",
+    "source_url": "URL",
+    "source_priority": "Priority",
+    "source_enabled": "Enabled",
+    "source_id_hint": "Enter source identifier",
+    "source_url_hint": "Enter source URL",
+    "source_priority_hint": "The smaller the number, the higher the priority",
+    "source_no_sources": "No sources",
+    "source_add_success": "Source added successfully",
+    "source_update_success": "Source updated successfully",
+    "source_delete_success": "Source deleted successfully",
+    "cache_total": "Total Cache",
+    "cache_count": "Files",
+    "cache_no_cache": "No cache",
+    "cache_delete_confirm": "Are you sure to delete this cache?",
+    "cache_refresh": "Refresh Cache",
+    "cache_clear_all": "Clear All Cache",
+    "cache_clear_all_confirm": "Are you sure to clear all caches?",
+    "cache_last_accessed": "Last Accessed",
+    "cache_never_accessed": "Never accessed",
+    "cache_detail": "Cache Detail",
+    "cache_detail_key": "Cache Key",
+    "cache_detail_path": "File Path",
+    "cache_refreshed": "Cache refreshed",
+    "cache_deleted": "Cache deleted",
+    "cache_cleared": "Cleared $count caches"
   },
   "submodule": {
     "cqupt_checkin": {
@@ -237,6 +285,17 @@
       "face_type_enter": "Entry",
       "face_type_leave": "Exit",
       "face_type_run": "Running"
+    },
+    "chaoxing": {
+      "courses": "Courses",
+      "homework": "Homework",
+      "messages": "Messages",
+      "profile": "Me",
+      "no_courses": "No courses available",
+      "no_activities": "No activities available",
+      "course_activities": "Course Activities",
+      "teacher": "Teacher",
+      "messages_placeholder": "Messages feature coming soon"
     }
   }
 }

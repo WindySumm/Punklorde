@@ -7,6 +7,7 @@ import 'package:punklorde/module/platform/chaoxing/chaoxing.dart';
 import 'package:signals/signals_flutter.dart';
 
 final Signal<List<ClassData>> clazzList = signal([]);
+final Signal<bool> dataLoading = signal(false);
 
 Timer? _updateTimer;
 bool _updateLock = false;
@@ -17,10 +18,12 @@ Future<void> _update() async {
     return;
   }
   _updateLock = true;
+  dataLoading.value = true;
   final r = await serviceChaoxingCheckin.getCourses(cred);
   if (r != null) {
     clazzList.value = r;
   }
+  dataLoading.value = false;
   _updateLock = false;
 }
 

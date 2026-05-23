@@ -251,6 +251,12 @@ class TranslationsNoticeEn {
 
 	/// en: 'Please enter the check-in code'
 	String get checkin_code_hint => 'Please enter the check-in code';
+
+	/// en: 'This field is required'
+	String get field_required => 'This field is required';
+
+	/// en: 'Invalid resolution format, expected 720*1280'
+	String get invalid_resolution_format => 'Invalid resolution format, expected 720*1280';
 }
 
 // Path: title
@@ -347,6 +353,33 @@ class TranslationsTitleEn {
 
 	/// en: 'Check-in Code'
 	String get checkin_code => 'Check-in Code';
+
+	/// en: 'Custom Device Info'
+	String get custom_device_info => 'Custom Device Info';
+
+	/// en: 'Using default device info'
+	String get default_device_info_hint => 'Using default device info';
+
+	/// en: 'Using custom device info'
+	String get custom_device_info_hint => 'Using custom device info';
+
+	/// en: 'Device Platform'
+	String get device_platform => 'Device Platform';
+
+	/// en: 'Device Brand'
+	String get device_brand => 'Device Brand';
+
+	/// en: 'Device Board'
+	String get device_board => 'Device Board';
+
+	/// en: 'Device Model'
+	String get device_model => 'Device Model';
+
+	/// en: 'OS Version'
+	String get device_os_ver => 'OS Version';
+
+	/// en: 'Resolution'
+	String get device_resolution => 'Resolution';
 }
 
 // Path: action
@@ -396,6 +429,18 @@ class TranslationsActionEn {
 	/// en: 'Paste'
 	String get paste => 'Paste';
 
+	/// en: 'Delete'
+	String get delete => 'Delete';
+
+	/// en: 'Edit'
+	String get edit => 'Edit';
+
+	/// en: 'Save'
+	String get save => 'Save';
+
+	/// en: 'Add'
+	String get add => 'Add';
+
 	/// en: 'Open with...'
 	String get open_with => 'Open with...';
 
@@ -422,6 +467,12 @@ class TranslationsActionEn {
 
 	/// en: 'Manually select check-in point'
 	String get manual_select_point => 'Manually select check-in point';
+
+	/// en: 'Custom Device Info'
+	String get custom_device_info => 'Custom Device Info';
+
+	/// en: 'Reset Device Info'
+	String get reset_device_info => 'Reset Device Info';
 }
 
 // Path: label
@@ -473,6 +524,9 @@ class TranslationsLabelEn {
 
 	/// en: 'Upcoming'
 	String get upcoming => 'Upcoming';
+
+	/// en: 'Ended'
+	String get ended => 'Ended';
 
 	/// en: 'Deadline'
 	String get deadline => 'Deadline';
@@ -530,6 +584,96 @@ class TranslationsSettingEn {
 
 	/// en: 'Github'
 	String get github_link => 'Github';
+
+	/// en: 'Add Source'
+	String get source_add => 'Add Source';
+
+	/// en: 'Edit Source'
+	String get source_edit => 'Edit Source';
+
+	/// en: 'Delete Source'
+	String get source_delete => 'Delete Source';
+
+	/// en: 'Are you sure to delete this source?'
+	String get source_delete_confirm => 'Are you sure to delete this source?';
+
+	/// en: 'Source ID'
+	String get source_id => 'Source ID';
+
+	/// en: 'URL'
+	String get source_url => 'URL';
+
+	/// en: 'Priority'
+	String get source_priority => 'Priority';
+
+	/// en: 'Enabled'
+	String get source_enabled => 'Enabled';
+
+	/// en: 'Enter source identifier'
+	String get source_id_hint => 'Enter source identifier';
+
+	/// en: 'Enter source URL'
+	String get source_url_hint => 'Enter source URL';
+
+	/// en: 'The smaller the number, the higher the priority'
+	String get source_priority_hint => 'The smaller the number, the higher the priority';
+
+	/// en: 'No sources'
+	String get source_no_sources => 'No sources';
+
+	/// en: 'Source added successfully'
+	String get source_add_success => 'Source added successfully';
+
+	/// en: 'Source updated successfully'
+	String get source_update_success => 'Source updated successfully';
+
+	/// en: 'Source deleted successfully'
+	String get source_delete_success => 'Source deleted successfully';
+
+	/// en: 'Total Cache'
+	String get cache_total => 'Total Cache';
+
+	/// en: 'Files'
+	String get cache_count => 'Files';
+
+	/// en: 'No cache'
+	String get cache_no_cache => 'No cache';
+
+	/// en: 'Are you sure to delete this cache?'
+	String get cache_delete_confirm => 'Are you sure to delete this cache?';
+
+	/// en: 'Refresh Cache'
+	String get cache_refresh => 'Refresh Cache';
+
+	/// en: 'Clear All Cache'
+	String get cache_clear_all => 'Clear All Cache';
+
+	/// en: 'Are you sure to clear all caches?'
+	String get cache_clear_all_confirm => 'Are you sure to clear all caches?';
+
+	/// en: 'Last Accessed'
+	String get cache_last_accessed => 'Last Accessed';
+
+	/// en: 'Never accessed'
+	String get cache_never_accessed => 'Never accessed';
+
+	/// en: 'Cache Detail'
+	String get cache_detail => 'Cache Detail';
+
+	/// en: 'Cache Key'
+	String get cache_detail_key => 'Cache Key';
+
+	/// en: 'File Path'
+	String get cache_detail_path => 'File Path';
+
+	/// en: 'Cache refreshed'
+	String get cache_refreshed => 'Cache refreshed';
+
+	/// en: 'Cache deleted'
+	String get cache_deleted => 'Cache deleted';
+
+	/// en: 'Cleared $count caches'
+	String cache_cleared({required Object count}) => 'Cleared ${count} caches';
 }
 
 // Path: submodule
@@ -541,6 +685,7 @@ class TranslationsSubmoduleEn {
 	// Translations
 	late final TranslationsSubmoduleCquptCheckinEn cqupt_checkin = TranslationsSubmoduleCquptCheckinEn._(_root);
 	late final TranslationsSubmoduleCquptSportEn cqupt_sport = TranslationsSubmoduleCquptSportEn._(_root);
+	late final TranslationsSubmoduleChaoxingEn chaoxing = TranslationsSubmoduleChaoxingEn._(_root);
 }
 
 // Path: submodule.cqupt_checkin
@@ -807,6 +952,42 @@ class TranslationsSubmoduleCquptSportEn {
 	String get face_type_run => 'Running';
 }
 
+// Path: submodule.chaoxing
+class TranslationsSubmoduleChaoxingEn {
+	TranslationsSubmoduleChaoxingEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Courses'
+	String get courses => 'Courses';
+
+	/// en: 'Homework'
+	String get homework => 'Homework';
+
+	/// en: 'Messages'
+	String get messages => 'Messages';
+
+	/// en: 'Me'
+	String get profile => 'Me';
+
+	/// en: 'No courses available'
+	String get no_courses => 'No courses available';
+
+	/// en: 'No activities available'
+	String get no_activities => 'No activities available';
+
+	/// en: 'Course Activities'
+	String get course_activities => 'Course Activities';
+
+	/// en: 'Teacher'
+	String get teacher => 'Teacher';
+
+	/// en: 'Messages feature coming soon'
+	String get messages_placeholder => 'Messages feature coming soon';
+}
+
 /// The flat map containing all translations for locale <en>.
 /// Only for edge cases! For simple maps, use the map function of this library.
 ///
@@ -873,6 +1054,8 @@ extension on Translations {
 			'notice.share_failed' => 'Share failed',
 			'notice.failed_open_file' => 'Failed to open file',
 			'notice.checkin_code_hint' => 'Please enter the check-in code',
+			'notice.field_required' => 'This field is required',
+			'notice.invalid_resolution_format' => 'Invalid resolution format, expected 720*1280',
 			'title.id' => 'ID',
 			'title.user' => 'User',
 			'title.platform' => 'Platform',
@@ -902,6 +1085,15 @@ extension on Translations {
 			'title.select_login_method' => 'Select the login method',
 			'title.use_ios_ua' => 'Use iOS UA',
 			'title.checkin_code' => 'Check-in Code',
+			'title.custom_device_info' => 'Custom Device Info',
+			'title.default_device_info_hint' => 'Using default device info',
+			'title.custom_device_info_hint' => 'Using custom device info',
+			'title.device_platform' => 'Device Platform',
+			'title.device_brand' => 'Device Brand',
+			'title.device_board' => 'Device Board',
+			'title.device_model' => 'Device Model',
+			'title.device_os_ver' => 'OS Version',
+			'title.device_resolution' => 'Resolution',
 			'action.back' => 'Back',
 			'action.refresh_login' => 'Refresh the login status',
 			'action.refresh_schedule' => 'Refresh schedule',
@@ -915,6 +1107,10 @@ extension on Translations {
 			'action.sms_login' => 'SMS Login',
 			'action.copy' => 'Copy',
 			'action.paste' => 'Paste',
+			'action.delete' => 'Delete',
+			'action.edit' => 'Edit',
+			'action.save' => 'Save',
+			'action.add' => 'Add',
 			'action.open_with' => 'Open with...',
 			'action.open_with_name' => ({required Object name}) => 'Open with ${name}',
 			'action.add_guest' => 'Add guest account',
@@ -924,6 +1120,8 @@ extension on Translations {
 			'action.guest_add_by_code' => 'Add from share code',
 			'action.guest_add_by_file' => 'Add from share file',
 			'action.manual_select_point' => 'Manually select check-in point',
+			'action.custom_device_info' => 'Custom Device Info',
+			'action.reset_device_info' => 'Reset Device Info',
 			'label.primary' => 'Primary',
 			'label.guest' => 'Guest',
 			'label.expired' => 'Expired',
@@ -938,6 +1136,7 @@ extension on Translations {
 			'label.exam' => 'Exam',
 			'label.ongoing' => 'Ongoing',
 			'label.upcoming' => 'Upcoming',
+			'label.ended' => 'Ended',
 			'label.deadline' => 'Deadline',
 			'feat.all_function' => 'All Features',
 			'feat.schedule' => 'Schedule',
@@ -951,6 +1150,36 @@ extension on Translations {
 			'setting.dl_cache' => 'Download Cache',
 			'setting.sources_list' => 'Sources List',
 			'setting.github_link' => 'Github',
+			'setting.source_add' => 'Add Source',
+			'setting.source_edit' => 'Edit Source',
+			'setting.source_delete' => 'Delete Source',
+			'setting.source_delete_confirm' => 'Are you sure to delete this source?',
+			'setting.source_id' => 'Source ID',
+			'setting.source_url' => 'URL',
+			'setting.source_priority' => 'Priority',
+			'setting.source_enabled' => 'Enabled',
+			'setting.source_id_hint' => 'Enter source identifier',
+			'setting.source_url_hint' => 'Enter source URL',
+			'setting.source_priority_hint' => 'The smaller the number, the higher the priority',
+			'setting.source_no_sources' => 'No sources',
+			'setting.source_add_success' => 'Source added successfully',
+			'setting.source_update_success' => 'Source updated successfully',
+			'setting.source_delete_success' => 'Source deleted successfully',
+			'setting.cache_total' => 'Total Cache',
+			'setting.cache_count' => 'Files',
+			'setting.cache_no_cache' => 'No cache',
+			'setting.cache_delete_confirm' => 'Are you sure to delete this cache?',
+			'setting.cache_refresh' => 'Refresh Cache',
+			'setting.cache_clear_all' => 'Clear All Cache',
+			'setting.cache_clear_all_confirm' => 'Are you sure to clear all caches?',
+			'setting.cache_last_accessed' => 'Last Accessed',
+			'setting.cache_never_accessed' => 'Never accessed',
+			'setting.cache_detail' => 'Cache Detail',
+			'setting.cache_detail_key' => 'Cache Key',
+			'setting.cache_detail_path' => 'File Path',
+			'setting.cache_refreshed' => 'Cache refreshed',
+			'setting.cache_deleted' => 'Cache deleted',
+			'setting.cache_cleared' => ({required Object count}) => 'Cleared ${count} caches',
 			'submodule.cqupt_checkin.title_check_in' => 'Check-in',
 			'submodule.cqupt_checkin.check_in' => 'Check in',
 			'submodule.cqupt_checkin.scan_checkin' => 'Scan',
@@ -1033,6 +1262,15 @@ extension on Translations {
 			'submodule.cqupt_sport.face_type_enter' => 'Entry',
 			'submodule.cqupt_sport.face_type_leave' => 'Exit',
 			'submodule.cqupt_sport.face_type_run' => 'Running',
+			'submodule.chaoxing.courses' => 'Courses',
+			'submodule.chaoxing.homework' => 'Homework',
+			'submodule.chaoxing.messages' => 'Messages',
+			'submodule.chaoxing.profile' => 'Me',
+			'submodule.chaoxing.no_courses' => 'No courses available',
+			'submodule.chaoxing.no_activities' => 'No activities available',
+			'submodule.chaoxing.course_activities' => 'Course Activities',
+			'submodule.chaoxing.teacher' => 'Teacher',
+			'submodule.chaoxing.messages_placeholder' => 'Messages feature coming soon',
 			_ => null,
 		};
 	}

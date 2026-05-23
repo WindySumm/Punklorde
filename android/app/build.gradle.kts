@@ -12,6 +12,14 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose") version "2.3.10"
 }
 
+// Force glance-appwidget to stable version: home_widget uses dynamic 1.+ which
+// recently started resolving to 1.3.0-alpha01 (requires AGP 9.1+ / compileSdk 37)
+configurations.all {
+    resolutionStrategy {
+        force("androidx.glance:glance-appwidget:1.1.1")
+    }
+}
+
 val keystoreProperties = Properties()
 val keystorePropertiesFile = rootProject.file("key.properties")
 if (keystorePropertiesFile.exists()) {

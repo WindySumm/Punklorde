@@ -131,6 +131,8 @@ class _TranslationsNoticeZhCn implements TranslationsNoticeEn {
 	@override String get share_failed => '分享失败';
 	@override String get failed_open_file => '无法打开文件';
 	@override String get checkin_code_hint => '请输入签到码';
+	@override String get field_required => '此字段不能为空';
+	@override String get invalid_resolution_format => '分辨率格式不正确，应为 720*1280';
 }
 
 // Path: title
@@ -169,6 +171,15 @@ class _TranslationsTitleZhCn implements TranslationsTitleEn {
 	@override String get select_login_method => '选择登录方式';
 	@override String get use_ios_ua => '使用 iOS UA';
 	@override String get checkin_code => '签到码';
+	@override String get custom_device_info => '自定义登录设备信息';
+	@override String get default_device_info_hint => '默认使用本机设备信息登录';
+	@override String get custom_device_info_hint => '将使用自定义的设备信息登录';
+	@override String get device_platform => '设备平台';
+	@override String get device_brand => '设备品牌';
+	@override String get device_board => '设备Board';
+	@override String get device_model => '设备型号';
+	@override String get device_os_ver => '系统版本';
+	@override String get device_resolution => '屏幕分辨率';
 }
 
 // Path: action
@@ -191,6 +202,10 @@ class _TranslationsActionZhCn implements TranslationsActionEn {
 	@override String get sms_login => '短信验证码登录';
 	@override String get copy => '复制';
 	@override String get paste => '粘贴';
+	@override String get delete => '删除';
+	@override String get edit => '编辑';
+	@override String get save => '保存';
+	@override String get add => '添加';
 	@override String get open_with => '打开方式...';
 	@override String open_with_name({required Object name}) => '用 ${name} 打开';
 	@override String get add_guest => '添加访客账户';
@@ -200,6 +215,8 @@ class _TranslationsActionZhCn implements TranslationsActionEn {
 	@override String get guest_add_by_code => '扫码添加';
 	@override String get guest_add_by_file => '从分享文件添加';
 	@override String get manual_select_point => '手动选择签到点';
+	@override String get custom_device_info => '自定义设备信息';
+	@override String get reset_device_info => '重置设备信息';
 }
 
 // Path: label
@@ -223,6 +240,7 @@ class _TranslationsLabelZhCn implements TranslationsLabelEn {
 	@override String get exam => '考试';
 	@override String get ongoing => '进行中';
 	@override String get upcoming => '即将开始';
+	@override String get ended => '已结束';
 	@override String get deadline => '截止';
 }
 
@@ -254,6 +272,36 @@ class _TranslationsSettingZhCn implements TranslationsSettingEn {
 	@override String get dl_cache => '下载缓存';
 	@override String get sources_list => '源列表';
 	@override String get github_link => 'Github';
+	@override String get source_add => '添加源';
+	@override String get source_edit => '编辑源';
+	@override String get source_delete => '删除源';
+	@override String get source_delete_confirm => '确定删除此源？';
+	@override String get source_id => '源ID';
+	@override String get source_url => 'URL';
+	@override String get source_priority => '优先级';
+	@override String get source_enabled => '启用';
+	@override String get source_id_hint => '请输入源标识';
+	@override String get source_url_hint => '请输入源地址';
+	@override String get source_priority_hint => '数字越小优先级越高';
+	@override String get source_no_sources => '暂无源';
+	@override String get source_add_success => '源添加成功';
+	@override String get source_update_success => '源更新成功';
+	@override String get source_delete_success => '源删除成功';
+	@override String get cache_total => '缓存总量';
+	@override String get cache_count => '文件数量';
+	@override String get cache_no_cache => '暂无缓存';
+	@override String get cache_delete_confirm => '确定删除此缓存？';
+	@override String get cache_refresh => '刷新缓存';
+	@override String get cache_clear_all => '清空所有缓存';
+	@override String get cache_clear_all_confirm => '确定清空所有缓存？';
+	@override String get cache_last_accessed => '最后访问';
+	@override String get cache_never_accessed => '未访问过';
+	@override String get cache_detail => '缓存详情';
+	@override String get cache_detail_key => '缓存键';
+	@override String get cache_detail_path => '文件路径';
+	@override String get cache_refreshed => '缓存已刷新';
+	@override String get cache_deleted => '缓存已删除';
+	@override String cache_cleared({required Object count}) => '已清空 ${count} 个缓存';
 }
 
 // Path: submodule
@@ -265,6 +313,7 @@ class _TranslationsSubmoduleZhCn implements TranslationsSubmoduleEn {
 	// Translations
 	@override late final _TranslationsSubmoduleCquptCheckinZhCn cqupt_checkin = _TranslationsSubmoduleCquptCheckinZhCn._(_root);
 	@override late final _TranslationsSubmoduleCquptSportZhCn cqupt_sport = _TranslationsSubmoduleCquptSportZhCn._(_root);
+	@override late final _TranslationsSubmoduleChaoxingZhCn chaoxing = _TranslationsSubmoduleChaoxingZhCn._(_root);
 }
 
 // Path: submodule.cqupt_checkin
@@ -367,6 +416,24 @@ class _TranslationsSubmoduleCquptSportZhCn implements TranslationsSubmoduleCqupt
 	@override String get face_type_run => '跑步';
 }
 
+// Path: submodule.chaoxing
+class _TranslationsSubmoduleChaoxingZhCn implements TranslationsSubmoduleChaoxingEn {
+	_TranslationsSubmoduleChaoxingZhCn._(this._root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get courses => '课程';
+	@override String get homework => '作业';
+	@override String get messages => '消息';
+	@override String get profile => '我';
+	@override String get no_courses => '暂无课程';
+	@override String get no_activities => '暂无活动';
+	@override String get course_activities => '课程活动';
+	@override String get teacher => '教师';
+	@override String get messages_placeholder => '消息功能即将上线';
+}
+
 /// The flat map containing all translations for locale <zh-CN>.
 /// Only for edge cases! For simple maps, use the map function of this library.
 ///
@@ -433,6 +500,8 @@ extension on TranslationsZhCn {
 			'notice.share_failed' => '分享失败',
 			'notice.failed_open_file' => '无法打开文件',
 			'notice.checkin_code_hint' => '请输入签到码',
+			'notice.field_required' => '此字段不能为空',
+			'notice.invalid_resolution_format' => '分辨率格式不正确，应为 720*1280',
 			'title.id' => 'ID',
 			'title.user' => '用户',
 			'title.platform' => '平台',
@@ -462,6 +531,15 @@ extension on TranslationsZhCn {
 			'title.select_login_method' => '选择登录方式',
 			'title.use_ios_ua' => '使用 iOS UA',
 			'title.checkin_code' => '签到码',
+			'title.custom_device_info' => '自定义登录设备信息',
+			'title.default_device_info_hint' => '默认使用本机设备信息登录',
+			'title.custom_device_info_hint' => '将使用自定义的设备信息登录',
+			'title.device_platform' => '设备平台',
+			'title.device_brand' => '设备品牌',
+			'title.device_board' => '设备Board',
+			'title.device_model' => '设备型号',
+			'title.device_os_ver' => '系统版本',
+			'title.device_resolution' => '屏幕分辨率',
 			'action.back' => '返回',
 			'action.refresh_login' => '刷新登录',
 			'action.refresh_schedule' => '刷新日程',
@@ -475,6 +553,10 @@ extension on TranslationsZhCn {
 			'action.sms_login' => '短信验证码登录',
 			'action.copy' => '复制',
 			'action.paste' => '粘贴',
+			'action.delete' => '删除',
+			'action.edit' => '编辑',
+			'action.save' => '保存',
+			'action.add' => '添加',
 			'action.open_with' => '打开方式...',
 			'action.open_with_name' => ({required Object name}) => '用 ${name} 打开',
 			'action.add_guest' => '添加访客账户',
@@ -484,6 +566,8 @@ extension on TranslationsZhCn {
 			'action.guest_add_by_code' => '扫码添加',
 			'action.guest_add_by_file' => '从分享文件添加',
 			'action.manual_select_point' => '手动选择签到点',
+			'action.custom_device_info' => '自定义设备信息',
+			'action.reset_device_info' => '重置设备信息',
 			'label.primary' => '主账号',
 			'label.guest' => '访客',
 			'label.expired' => '过期',
@@ -498,6 +582,7 @@ extension on TranslationsZhCn {
 			'label.exam' => '考试',
 			'label.ongoing' => '进行中',
 			'label.upcoming' => '即将开始',
+			'label.ended' => '已结束',
 			'label.deadline' => '截止',
 			'feat.all_function' => '全部功能',
 			'feat.schedule' => '日程',
@@ -511,6 +596,36 @@ extension on TranslationsZhCn {
 			'setting.dl_cache' => '下载缓存',
 			'setting.sources_list' => '源列表',
 			'setting.github_link' => 'Github',
+			'setting.source_add' => '添加源',
+			'setting.source_edit' => '编辑源',
+			'setting.source_delete' => '删除源',
+			'setting.source_delete_confirm' => '确定删除此源？',
+			'setting.source_id' => '源ID',
+			'setting.source_url' => 'URL',
+			'setting.source_priority' => '优先级',
+			'setting.source_enabled' => '启用',
+			'setting.source_id_hint' => '请输入源标识',
+			'setting.source_url_hint' => '请输入源地址',
+			'setting.source_priority_hint' => '数字越小优先级越高',
+			'setting.source_no_sources' => '暂无源',
+			'setting.source_add_success' => '源添加成功',
+			'setting.source_update_success' => '源更新成功',
+			'setting.source_delete_success' => '源删除成功',
+			'setting.cache_total' => '缓存总量',
+			'setting.cache_count' => '文件数量',
+			'setting.cache_no_cache' => '暂无缓存',
+			'setting.cache_delete_confirm' => '确定删除此缓存？',
+			'setting.cache_refresh' => '刷新缓存',
+			'setting.cache_clear_all' => '清空所有缓存',
+			'setting.cache_clear_all_confirm' => '确定清空所有缓存？',
+			'setting.cache_last_accessed' => '最后访问',
+			'setting.cache_never_accessed' => '未访问过',
+			'setting.cache_detail' => '缓存详情',
+			'setting.cache_detail_key' => '缓存键',
+			'setting.cache_detail_path' => '文件路径',
+			'setting.cache_refreshed' => '缓存已刷新',
+			'setting.cache_deleted' => '缓存已删除',
+			'setting.cache_cleared' => ({required Object count}) => '已清空 ${count} 个缓存',
 			'submodule.cqupt_checkin.title_check_in' => '重邮统一签到',
 			'submodule.cqupt_checkin.check_in' => '签到',
 			'submodule.cqupt_checkin.scan_checkin' => '扫码签到',
@@ -593,6 +708,15 @@ extension on TranslationsZhCn {
 			'submodule.cqupt_sport.face_type_enter' => '进场',
 			'submodule.cqupt_sport.face_type_leave' => '离场',
 			'submodule.cqupt_sport.face_type_run' => '跑步',
+			'submodule.chaoxing.courses' => '课程',
+			'submodule.chaoxing.homework' => '作业',
+			'submodule.chaoxing.messages' => '消息',
+			'submodule.chaoxing.profile' => '我',
+			'submodule.chaoxing.no_courses' => '暂无课程',
+			'submodule.chaoxing.no_activities' => '暂无活动',
+			'submodule.chaoxing.course_activities' => '课程活动',
+			'submodule.chaoxing.teacher' => '教师',
+			'submodule.chaoxing.messages_placeholder' => '消息功能即将上线',
 			_ => null,
 		};
 	}

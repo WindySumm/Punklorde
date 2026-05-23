@@ -61,7 +61,9 @@
     "share_qr_render_error": "二维码生成失败，请使用文件分享",
     "share_failed": "分享失败",
     "failed_open_file": "无法打开文件",
-    "checkin_code_hint": "请输入签到码"
+    "checkin_code_hint": "请输入签到码",
+    "field_required": "此字段不能为空",
+    "invalid_resolution_format": "分辨率格式不正确，应为 720*1280"
   },
   "title": {
     "id": "ID",
@@ -92,7 +94,16 @@
     "student_list": "学生名单",
     "select_login_method": "选择登录方式",
     "use_ios_ua": "使用 iOS UA",
-    "checkin_code": "签到码"
+    "checkin_code": "签到码",
+    "custom_device_info": "自定义登录设备信息",
+    "default_device_info_hint": "默认使用本机设备信息登录",
+    "custom_device_info_hint": "将使用自定义的设备信息登录",
+    "device_platform": "设备平台",
+    "device_brand": "设备品牌",
+    "device_board": "设备Board",
+    "device_model": "设备型号",
+    "device_os_ver": "系统版本",
+    "device_resolution": "屏幕分辨率"
   },
   "action": {
     "back": "返回",
@@ -108,6 +119,10 @@
     "sms_login": "短信验证码登录",
     "copy": "复制",
     "paste": "粘贴",
+    "delete": "删除",
+    "edit": "编辑",
+    "save": "保存",
+    "add": "添加",
     "open_with": "打开方式...",
     "open_with_name": "用 $name 打开",
     "add_guest": "添加访客账户",
@@ -116,7 +131,9 @@
     "guest_add_by_login": "登录添加",
     "guest_add_by_code": "扫码添加",
     "guest_add_by_file": "从分享文件添加",
-    "manual_select_point": "手动选择签到点"
+    "manual_select_point": "手动选择签到点",
+    "custom_device_info": "自定义设备信息",
+    "reset_device_info": "重置设备信息"
   },
   "label": {
     "primary": "主账号",
@@ -133,6 +150,7 @@
     "exam": "考试",
     "ongoing": "进行中",
     "upcoming": "即将开始",
+    "ended": "已结束",
     "deadline": "截止"
   },
   "feat": {
@@ -149,7 +167,37 @@
     "password_vault": "密码保管库",
     "dl_cache": "下载缓存",
     "sources_list": "源列表",
-    "github_link": "Github"
+    "github_link": "Github",
+    "source_add": "添加源",
+    "source_edit": "编辑源",
+    "source_delete": "删除源",
+    "source_delete_confirm": "确定删除此源？",
+    "source_id": "源ID",
+    "source_url": "URL",
+    "source_priority": "优先级",
+    "source_enabled": "启用",
+    "source_id_hint": "请输入源标识",
+    "source_url_hint": "请输入源地址",
+    "source_priority_hint": "数字越小优先级越高",
+    "source_no_sources": "暂无源",
+    "source_add_success": "源添加成功",
+    "source_update_success": "源更新成功",
+    "source_delete_success": "源删除成功",
+    "cache_total": "缓存总量",
+    "cache_count": "文件数量",
+    "cache_no_cache": "暂无缓存",
+    "cache_delete_confirm": "确定删除此缓存？",
+    "cache_refresh": "刷新缓存",
+    "cache_clear_all": "清空所有缓存",
+    "cache_clear_all_confirm": "确定清空所有缓存？",
+    "cache_last_accessed": "最后访问",
+    "cache_never_accessed": "未访问过",
+    "cache_detail": "缓存详情",
+    "cache_detail_key": "缓存键",
+    "cache_detail_path": "文件路径",
+    "cache_refreshed": "缓存已刷新",
+    "cache_deleted": "缓存已删除",
+    "cache_cleared": "已清空 $count 个缓存"
   },
   "submodule": {
     "cqupt_checkin": {
@@ -237,6 +285,17 @@
       "face_type_enter": "进场",
       "face_type_leave": "离场",
       "face_type_run": "跑步"
+    },
+    "chaoxing": {
+      "courses": "课程",
+      "homework": "作业",
+      "messages": "消息",
+      "profile": "我",
+      "no_courses": "暂无课程",
+      "no_activities": "暂无活动",
+      "course_activities": "课程活动",
+      "teacher": "教师",
+      "messages_placeholder": "消息功能即将上线"
     }
   }
 }
