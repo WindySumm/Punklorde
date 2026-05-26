@@ -249,7 +249,7 @@ class ChaoxingPlatform extends Platform {
       if (r1.statusCode != 200 || data1 == null || data1["status"] != true) {
         return null;
       }
-      final r2 = await _dio.get(
+      final r2 = await _dio.post(
         _apiInfo,
         data: FormData.fromMap({"data": deviceInfoData}),
         options: Options(
