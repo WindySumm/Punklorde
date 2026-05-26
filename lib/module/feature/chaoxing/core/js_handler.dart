@@ -15,6 +15,8 @@ class ChaoxingJSHandler {
             await opOpenUrl(Map<String, dynamic>.from(payload)["webUrl"]);
           }
           break;
+        case 'CLIENT_WEB_LIFECYCLE':
+          break;
         default:
           await opOther(name, payload);
           break;

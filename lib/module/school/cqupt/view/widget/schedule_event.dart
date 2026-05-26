@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:forui/forui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:punklorde/app/view/page/schedule_event_editor.dart';
 import 'package:punklorde/i18n/strings.g.dart';
 import 'package:punklorde/module/model/schedule.dart';
 import 'package:punklorde/utils/etc/time.dart';
@@ -9,11 +10,13 @@ import 'package:punklorde/utils/etc/time.dart';
 class ScheduleEventPanel extends StatefulWidget {
   final ScheduleService service;
   final ScheduleEvent event;
+  final BuildContext parentContext;
 
   const ScheduleEventPanel({
     super.key,
     required this.service,
     required this.event,
+    required this.parentContext,
   });
 
   @override
@@ -153,6 +156,27 @@ class _ScheduleEventPanelState extends State<ScheduleEventPanel> {
                             : null,
                       ].nonNulls.toList(),
                     ),
+                    if (ev.type == ScheduleEventType.custom)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: Row(
+                          spacing: 8,
+                          children: [
+                            FButton(
+                              variant: .secondary,
+                              size: .sm,
+                              onPress: () {
+                                // 先关闭当前事件面板，再在父级上下文打开编辑器
+                                final parentCtx = widget.parentContext;
+                                Navigator.of(context).pop();
+                                showCustomEventEditor(parentCtx, event: ev);
+                              },
+                              prefix: const Icon(LucideIcons.pencilLine),
+                              child: Text(t.action.edit),
+                            ),
+                          ],
+                        ),
+                      ),
                   ],
                 ),
               ),

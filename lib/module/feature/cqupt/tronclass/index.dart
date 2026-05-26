@@ -308,6 +308,20 @@ document.documentElement.style.setProperty('--ion-safe-area-bottom','0');
             platCquptTronclass.name,
             style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
           ),
+          const Spacer(),
+          // 刷新按钮
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () => _controller?.reload(),
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Icon(
+                LucideIcons.refreshCcw,
+                size: 18,
+                color: colors.mutedForeground,
+              ),
+            ),
+          ),
         ],
       ),
     );

@@ -53,7 +53,7 @@ class CquptScheduleService extends ScheduleService {
     showFSheet(
       context: context,
       builder: (sheetContext) =>
-          ScheduleEventPanel(event: event, service: this),
+          ScheduleEventPanel(event: event, service: this, parentContext: context),
       side: .btt,
     );
   }

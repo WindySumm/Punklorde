@@ -124,6 +124,8 @@ class _TranslationsNoticeZhCn implements TranslationsNoticeEn {
 	@override String get never_updated => '从未更新';
 	@override String get failed_get_data => '获取数据失败';
 	@override String get schedule_empty => '今天已经没课了~';
+	@override String get schedule_title_hint => '请输入日程标题';
+	@override String get schedule_location_hint => '可选，点击右侧按钮在地图上选点';
 	@override String get phone_num_empty_hint => '手机号不能为空';
 	@override String get ver_code_empty_hint => '验证码不能为空';
 	@override String get pwd_empty_hint => '密码不能为空';
@@ -156,10 +158,22 @@ class _TranslationsTitleZhCn implements TranslationsTitleEn {
 	@override String get select_platform => '选择平台';
 	@override String get scan_result => '扫码结果';
 	@override String get add_guest => '添加访客账户';
+	@override String get add_custom_event => '添加自定义日程';
+	@override String get edit_custom_event => '编辑自定义日程';
+	@override String get pick_location => '选择地点';
 	@override String get select_checkin_user => '谁要签到？';
 	@override String get select_checkin_user_hine => '将为这些用户进行签到';
 	@override String get checkin_result => '签到结果';
 	@override String week_title({required Object week}) => '第 ${week} 周';
+	@override String get schedule_title => '日程标题';
+	@override String get schedule_description => '描述';
+	@override String get schedule_weeks => '周次';
+	@override String get schedule_day => '星期';
+	@override String get schedule_slot => '时间节次';
+	@override String get schedule_color => '颜色';
+	@override String get basic_info => '基本信息';
+	@override String get time_schedule => '时间安排';
+	@override String get slot_span => '跨节数';
 	@override String get teacher => '教师';
 	@override String get location => '地点';
 	@override String get time => '时间';
@@ -215,6 +229,8 @@ class _TranslationsActionZhCn implements TranslationsActionEn {
 	@override String get guest_add_by_code => '扫码添加';
 	@override String get guest_add_by_file => '从分享文件添加';
 	@override String get manual_select_point => '手动选择签到点';
+	@override String get pick_on_map => '在地图上选择';
+	@override String get confirm_location => '确认位置';
 	@override String get custom_device_info => '自定义设备信息';
 	@override String get reset_device_info => '重置设备信息';
 }

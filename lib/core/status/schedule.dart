@@ -187,13 +187,12 @@ void storeScheduleStatus() {
       instance: scheduleMMKV,
     );
   }
-  if (scheduleCustomEventsSignal.value.isNotEmpty) {
-    storage.putList(
-      'custom',
-      scheduleCustomEventsSignal.value.values.map((v) => v.toJson()).toList(),
-      instance: scheduleMMKV,
-    );
-  }
+  // Always persist, even when empty - this ensures deletions are saved
+  storage.putList(
+    'custom',
+    scheduleCustomEventsSignal.value.values.map((v) => v.toJson()).toList(),
+    instance: scheduleMMKV,
+  );
   if (lastScheduleUpdateTimeSignal.value != null) {
     storage.putInt(
       'update',

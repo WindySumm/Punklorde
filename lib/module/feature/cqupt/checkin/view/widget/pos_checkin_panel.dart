@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forui/forui.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:punklorde/app/view/page/map_picker.dart';
 import 'package:punklorde/common/model/location.dart';
 import 'package:punklorde/core/status/location.dart';
 import 'package:punklorde/i18n/strings.g.dart';
@@ -35,6 +36,16 @@ class _PosCheckinPanelState extends State<PosCheckinPanel> {
     super.dispose();
   }
 
+  Future<void> _manualSelectPoint() async {
+    final Coordinate? result = await Navigator.of(context, rootNavigator: true)
+        .push<Coordinate>(
+          MaterialPageRoute(builder: (context) => const MapPickerPage()),
+        );
+    if (result != null && mounted) {
+      widget.onConfirm(result);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = context.theme.colors;
@@ -59,7 +70,7 @@ class _PosCheckinPanelState extends State<PosCheckinPanel> {
                   crossAxisAlignment: .start,
                   children: [
                     Text(
-                      t.submodule.cqupt_checkin.pin_checkin,
+                      t.submodule.cqupt_checkin.pos_checkin,
                       style: TextStyle(
                         fontSize: 14,
                         color: colors.mutedForeground,
@@ -85,15 +96,7 @@ class _PosCheckinPanelState extends State<PosCheckinPanel> {
                     const SizedBox(height: 8),
                     FButton(
                       variant: .secondary,
-                      onPress: () {},
-                      prefix: const Icon(LucideIcons.mapPinSearch),
-                      child: Text(
-                        t.submodule.cqupt_checkin.checkin_use_auto_loc,
-                      ),
-                    ),
-                    FButton(
-                      variant: .secondary,
-                      onPress: () {},
+                      onPress: _manualSelectPoint,
                       prefix: const Icon(LucideIcons.mousePointerClick),
                       child: Text(t.action.manual_select_point),
                     ),

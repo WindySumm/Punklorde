@@ -10,6 +10,7 @@ import 'package:punklorde/core/status/schedule.dart';
 import 'package:punklorde/i18n/strings.g.dart';
 import 'package:punklorde/module/model/schedule.dart';
 import 'package:punklorde/module/model/semester.dart';
+import 'package:punklorde/app/view/page/schedule_event_editor.dart';
 import 'package:punklorde/utils/etc/theme.dart';
 import 'package:punklorde/utils/etc/time.dart';
 import 'package:signals/signals_flutter.dart';
@@ -141,7 +142,7 @@ class _ScheduleViewState extends State<ScheduleView> {
                 FButton.icon(
                   size: .xs,
                   variant: .secondary,
-                  onPress: () {},
+                  onPress: () => showCustomEventEditor(context),
                   child: const Icon(LucideIcons.calendarPlus),
                 ),
                 FButton.icon(

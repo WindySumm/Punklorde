@@ -231,6 +231,12 @@ class TranslationsNoticeEn {
 	/// en: 'There are no classes today ~'
 	String get schedule_empty => 'There are no classes today ~';
 
+	/// en: 'Enter event title'
+	String get schedule_title_hint => 'Enter event title';
+
+	/// en: 'Optional, tap the button to pick on map'
+	String get schedule_location_hint => 'Optional, tap the button to pick on map';
+
 	/// en: 'Phone number cannot be blank'
 	String get phone_num_empty_hint => 'Phone number cannot be blank';
 
@@ -309,6 +315,15 @@ class TranslationsTitleEn {
 	/// en: 'Add Guest Account'
 	String get add_guest => 'Add Guest Account';
 
+	/// en: 'Add Custom Event'
+	String get add_custom_event => 'Add Custom Event';
+
+	/// en: 'Edit Custom Event'
+	String get edit_custom_event => 'Edit Custom Event';
+
+	/// en: 'Pick Location'
+	String get pick_location => 'Pick Location';
+
 	/// en: 'Select the Users'
 	String get select_checkin_user => 'Select the Users';
 
@@ -320,6 +335,33 @@ class TranslationsTitleEn {
 
 	/// en: 'Week $week'
 	String week_title({required Object week}) => 'Week ${week}';
+
+	/// en: 'Title'
+	String get schedule_title => 'Title';
+
+	/// en: 'Description'
+	String get schedule_description => 'Description';
+
+	/// en: 'Weeks'
+	String get schedule_weeks => 'Weeks';
+
+	/// en: 'Day'
+	String get schedule_day => 'Day';
+
+	/// en: 'Time Slot'
+	String get schedule_slot => 'Time Slot';
+
+	/// en: 'Color'
+	String get schedule_color => 'Color';
+
+	/// en: 'Basic Info'
+	String get basic_info => 'Basic Info';
+
+	/// en: 'Time Schedule'
+	String get time_schedule => 'Time Schedule';
+
+	/// en: 'Span'
+	String get slot_span => 'Span';
 
 	/// en: 'Teacher'
 	String get teacher => 'Teacher';
@@ -467,6 +509,12 @@ class TranslationsActionEn {
 
 	/// en: 'Manually select check-in point'
 	String get manual_select_point => 'Manually select check-in point';
+
+	/// en: 'Pick on Map'
+	String get pick_on_map => 'Pick on Map';
+
+	/// en: 'Confirm Location'
+	String get confirm_location => 'Confirm Location';
 
 	/// en: 'Custom Device Info'
 	String get custom_device_info => 'Custom Device Info';

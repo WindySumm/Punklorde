@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:forui/forui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:punklorde/app/view/page/map_picker.dart';
 import 'package:punklorde/common/model/location.dart';
 import 'package:punklorde/core/status/auth.dart';
 import 'package:punklorde/core/status/location.dart';
@@ -151,6 +152,8 @@ Future<Coordinate?> _showPosSheet(
   final completer = Completer<Coordinate?>();
   startLocationService(LocationServiceOptions());
 
+  final colors = context.theme.colors;
+
   await showFSheet(
     context: context,
     builder: (sheetContext) => Scaffold(
@@ -170,14 +173,15 @@ Future<Coordinate?> _showPosSheet(
                     '位置签到',
                     style: TextStyle(
                       fontSize: 14,
-                      color: context.theme.colors.mutedForeground,
+                      color: colors.mutedForeground,
                     ),
                   ),
                   Text(
                     active.title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
+                      color: colors.foreground,
                     ),
                     maxLines: 2,
                   ),
@@ -187,11 +191,36 @@ Future<Coordinate?> _showPosSheet(
                       active.description!,
                       style: TextStyle(
                         fontSize: 14,
-                        color: context.theme.colors.mutedForeground,
+                        color: colors.mutedForeground,
                       ),
                     ),
                   const FDivider(),
                   const SizedBox(height: 8),
+                  // 在地图上手动选点
+                  FButton(
+                    variant: FButtonVariant.secondary,
+                    onPress: () async {
+                      final Coordinate? result =
+                          await Navigator.of(
+                            context,
+                            rootNavigator: true,
+                          ).push<Coordinate>(
+                            MaterialPageRoute(
+                              builder: (context) => const MapPickerPage(),
+                            ),
+                          );
+                      if (result != null) {
+                        Navigator.of(sheetContext).pop();
+                        if (!completer.isCompleted) {
+                          stopLocationService();
+                          completer.complete(result);
+                        }
+                      }
+                    },
+                    prefix: const Icon(LucideIcons.mapPinSearch),
+                    child: const Text('在地图上手动选点'),
+                  ),
+                  // 使用当前位置签到
                   FButton(
                     variant: FButtonVariant.primary,
                     onPress: () {

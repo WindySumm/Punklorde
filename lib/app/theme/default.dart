@@ -3,7 +3,7 @@ import 'package:flutter/painting.dart';
 import 'package:forui/forui.dart';
 import 'package:pinput/pinput.dart';
 
-const _colorsLight = FColors(
+final _colorsLight = FColors(
   brightness: .light,
   systemOverlayStyle: .dark,
   barrier: Color(0x33000000),
@@ -23,7 +23,7 @@ const _colorsLight = FColors(
   border: Color(0xFFE4E4E7),
 );
 
-const _colorsDark = FColors(
+final _colorsDark = FColors(
   brightness: .dark,
   systemOverlayStyle: .light,
   barrier: Color(0x7A000000),
